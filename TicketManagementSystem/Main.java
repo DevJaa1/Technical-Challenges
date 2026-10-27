@@ -14,6 +14,7 @@ public class Main {
         meuEvento.sellTicket(t1);
         meuEvento.sellTicket(t2);
         meuEvento.sellTicket(t3);
+        meuEvento.cancelTicket(t2.getCod());
 
         // 4. Exibir o resumo individual de cada bilhete
         System.out.println(t1.getResume());
@@ -24,7 +25,7 @@ public class Main {
         System.out.printf("Faturamento Total: R$ %.2f%n", meuEvento.calculateRevenue());
 
         // 6. Testar cancelamento de um bilhete
-        meuEvento.cancelTicket(t1);
+        meuEvento.cancelTicket(t1.getCod());
         System.out.println("Após o cancelamento:");
         System.out.println(meuEvento.calculateRevenue());
     }

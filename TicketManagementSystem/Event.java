@@ -11,25 +11,31 @@ public class Event {
 
     public Event(String nameevent, int capacityMAX) {
 
+        if (capacityMAX < 0) {
+            throw new IllegalArgumentException("The maximum capacity must be greater than zero.");
+        }
+
         this.nameEvent = nameevent;
         this.capacityMax = capacityMAX;
         this.ticketsSaled = new ArrayList<>();
 
     }
 
-    public void sellTicket(Ticket tckt) {
+    public boolean sellTicket(Ticket tckt) {
         if (ticketsSaled.size() >= capacityMax) {
             throw new IllegalArgumentException("Max capacity Full!");
         }
         tckt.reserve();
         ticketsSaled.add(tckt);
+
+        return true;
     }
-    
+
     public double calculateRevenue() {
-        
+
         double revenue = 0.0;
 
-        for(Ticket tc : ticketsSaled) {
+        for (Ticket tc : ticketsSaled) {
             revenue += tc.calcularPrecoFinal();
         }
 
@@ -37,8 +43,38 @@ public class Event {
 
     }
 
-    public void cancelTicket(Ticket tckt) {
-        tckt.cancel();
-        ticketsSaled.remove(tckt);
+    public boolean cancelTicket(String codTckt) {
+
+        for (Ticket tck : ticketsSaled) {
+            if (tck.getCod().equals(codTckt)) {
+                tck.cancel();
+                ticketsSaled.remove(codTckt);
+                return true;
+            }
+        }
+
+        return false;
+
+    
+    }
+
+     public void exibirRelatorio() {
+
+        System.out.println("===== RELATÓRIO DO EVENTO =====");
+        System.out.println("Evento: " + nameEvent);
+        System.out.println(
+            "Ocupação: " + ticketsSaled.size()
+            + "/" + capacityMax
+        );
+        System.out.printf(
+            "Faturamento total: R$ %.2f%n",
+            calculateRevenue()
+        );
+
+        System.out.println("\n===== INGRESSOS VENDIDOS =====");
+
+        for (Ticket ingresso : ticketsSaled) {
+            System.out.println(ingresso.getResume());
+        }
     }
 }
