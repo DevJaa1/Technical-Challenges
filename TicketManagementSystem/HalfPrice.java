@@ -12,7 +12,7 @@ public class HalfPrice extends Ticket {
 
         super(nameHolder, baseprice, cod);
 
-        if (docPeople == null || docPeople.length() < 5) {
+        if (doc == null || doc.length() < 5) {
             throw new IllegalArgumentException("The docPeople must have at least 5 characters.");
         }
 

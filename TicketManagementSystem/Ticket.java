@@ -51,13 +51,13 @@ public abstract class Ticket {
 
     public void reserve() {
 
-        this.ticketstatus = ticketstatus.RESERVED;
+        this.ticketstatus = TicketStatus.RESERVED;
 
     }
 
     public void cancel() {
 
-        this.ticketstatus = ticketstatus.CANCELLED;
+        this.ticketstatus = TicketStatus.CANCELLED;
     }
 
     public String getResume() {
