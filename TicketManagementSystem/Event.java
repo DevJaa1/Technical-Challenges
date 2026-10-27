@@ -21,6 +21,7 @@ public class Event {
         if (ticketsSaled.size() >= capacityMax) {
             throw new IllegalArgumentException("Max capacity Full!");
         }
+        tckt.reserve();
         ticketsSaled.add(tckt);
     }
     
@@ -34,5 +35,10 @@ public class Event {
 
         return revenue;
 
+    }
+
+    public void cancelTicket(Ticket tckt) {
+        tckt.cancel();
+        ticketsSaled.remove(tckt);
     }
 }

@@ -10,10 +10,10 @@ public abstract class Ticket {
     public Ticket(String nameholder, double baseprice, String cod) {
 
         this.nameHolder = nameholder;
-        this.basePrice = baseprice;
         if (baseprice <= 0) {
             throw new IllegalArgumentException("O numero deve ser maior que 0");
         }
+        this.basePrice = baseprice;
         this.cod = cod;
         this.ticketstatus = ticketstatus.AVALIABLE;
 
