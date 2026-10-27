@@ -9,7 +9,7 @@ public class Event {
     private int capacityMax;
     private List<Ticket> ticketsSaled;
 
-    public Event (String nameevent, int capacityMAX) {
+    public Event(String nameevent, int capacityMAX) {
 
         this.nameEvent = nameevent;
         this.capacityMax = capacityMAX;
@@ -17,5 +17,22 @@ public class Event {
 
     }
 
+    public void sellTicket(Ticket tckt) {
+        if (ticketsSaled.size() >= capacityMax) {
+            throw new IllegalArgumentException("Max capacity Full!");
+        }
+        ticketsSaled.add(tckt);
+    }
+    
+    public double calculateRevenue() {
+        
+        double revenue = 0.0;
 
+        for(Ticket tc : ticketsSaled) {
+            revenue += tc.calcularPrecoFinal();
+        }
+
+        return revenue;
+
+    }
 }
