@@ -15,7 +15,7 @@ public abstract class Ticket {
         }
         this.basePrice = baseprice;
         this.cod = cod;
-        this.ticketstatus = ticketstatus.AVALIABLE;
+        this.ticketstatus = TicketStatus.AVALIABLE;
 
     }
 
