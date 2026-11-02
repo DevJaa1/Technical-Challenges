@@ -44,4 +44,7 @@ public abstract class Device {
         this.onDevice = onDevice;
     }
 
+    public abstract String getStatus();
+
+
 }
